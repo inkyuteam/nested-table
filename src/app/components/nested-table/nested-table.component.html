@@ -1,1 +1,32 @@
-{{temp}}
+<table>
+  <thead>
+    <th></th>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Email</th>
+    <th>Phone number</th>
+    <th>Company name</th>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let tableRow of tableData">
+      <tr (click)="tableRow.isExpanded = !tableRow.isExpanded">
+        <td>
+          <input type="checkbox" />
+        </td>
+        <td>
+          {{tableRow['name']}}
+        </td>
+        <td>{{tableRow['type']}}</td>
+        <td>{{tableRow['email']}}</td>
+        <td>{{tableRow['phoneNo']}}</td>
+        <td>{{tableRow['companyName']}}</td>
+      </tr>
+      <tr *ngIf="tableRow.isExpanded && tableRow['children']">
+        <td></td>
+        <td colspan="5">
+          <app-nested-table [tableData]="tableRow['children']"></app-nested-table>
+        </td>
+      </tr>
+    </ng-container>
+  </tbody>
+</table>

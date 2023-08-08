@@ -1,0 +1,43 @@
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-family: Arial, sans-serif;
+
+  th,
+  td {
+    padding: 8px;
+    text-align: left;
+  }
+
+  tr {
+    background-color: white;
+  }
+
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+
+  th {
+    background-color: #3498db;
+    color: white;
+    font-weight: bold;
+  }
+
+  td {
+    border: 1px solid #ddd;
+  }
+
+  tr:hover {
+    background-color: #e6e6e6;
+    cursor: pointer;
+  }
+
+  th:first-child {
+    border-top-left-radius: 8px;
+  }
+
+  th:last-child {
+    border-top-right-radius: 8px;
+  }
+
+}

@@ -9,12 +9,11 @@ import { TableData } from 'src/app/interfaces';
 })
 export class NestedTableComponent {
   @Input() tableData?: TableData[];
-  public temp: string = '';
 
   ngOnInit() {
     if (!this.tableData) {
       this.tableData = data;
     }
-    this.temp = JSON.stringify(this.tableData);
+    this.tableData.forEach(row => row.isExpanded = false);
   }
 }

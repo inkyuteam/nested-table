@@ -6,5 +6,6 @@ export interface TableData {
   companyName: string;
   address: string;
   children?: TableData[];
+  isExpanded?: boolean;
   [key: string]: any;
 }
