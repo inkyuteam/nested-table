@@ -9,4 +9,8 @@ import { TableData } from 'src/app/interfaces';
 })
 export class DashboardComponent {
   tableData: TableData[] = data;
+
+  ngOnInit(){
+    this.tableData[0].isSelected = true;
+  }
 }
