@@ -29,7 +29,6 @@ table {
 
   tr:hover {
     background-color: #e6e6e6;
-    cursor: pointer;
   }
 
   th:first-child {
@@ -40,4 +39,16 @@ table {
     border-top-right-radius: 8px;
   }
 
+}
+
+.rotated {
+  transform: rotate(90deg);
+}
+
+div i {
+  cursor: pointer;
+}
+
+.bi {
+  cursor: pointer;
 }

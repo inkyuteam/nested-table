@@ -7,5 +7,6 @@ export interface TableData {
   address: string;
   children?: TableData[];
   isExpanded?: boolean;
+  isSelected?: boolean;
   [key: string]: any;
 }

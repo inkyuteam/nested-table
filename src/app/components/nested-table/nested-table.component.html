@@ -6,26 +6,37 @@
     <th>Email</th>
     <th>Phone number</th>
     <th>Company name</th>
+    <th></th>
+    <th *ngIf="level===1"></th>
   </thead>
   <tbody>
     <ng-container *ngFor="let tableRow of tableData">
-      <tr (click)="tableRow.isExpanded = !tableRow.isExpanded">
+      <tr>
         <td>
-          <input type="checkbox" />
+          <input type="checkbox" [checked]="tableRow.isSelected" (click)="handleSelectionChange(tableRow)" />
         </td>
         <td>
-          {{tableRow['name']}}
-          <i class="bi bi-arrow-right-short"></i>
+          <div class="d-flex justify-content-between">
+            <div>
+              {{tableRow['name']}}
+            </div>
+            <div *ngIf="tableRow['children']" [ngClass]="{'rotated': tableRow.isExpanded}"
+              (click)="handleExpandChange(tableRow)">
+              <i class="bi bi-arrow-right-short"></i>
+            </div>
+          </div>
         </td>
-        <td>{{tableRow['type']}}</td>
-        <td>{{tableRow['email']}}</td>
-        <td>{{tableRow['phoneNo']}}</td>
-        <td>{{tableRow['companyName']}}</td>
+        <td> {{tableRow['type']}} </td>
+        <td> {{tableRow['email']}} </td>
+        <td> {{tableRow['phoneNo']}} </td>
+        <td> {{tableRow['companyName']}} </td>
+        <td> <i class="bi bi-trash"></i> </td>
+        <td *ngIf="level===1"> <i class="bi bi-pen"></i> </td>
       </tr>
       <tr *ngIf="tableRow.isExpanded && tableRow['children']">
         <td></td>
-        <td colspan="5">
-          <app-nested-table [tableData]="tableRow['children']"></app-nested-table>
+        <td colspan="7">
+          <app-nested-table [(tableData)]="tableRow['children']" [level]="level + 1"></app-nested-table>
         </td>
       </tr>
     </ng-container>
