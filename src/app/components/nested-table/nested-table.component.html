@@ -11,7 +11,7 @@
   </thead>
   <tbody>
     <ng-container *ngFor="let tableRow of tableData">
-      <tr>
+      <tr [ngClass]="{'selected': tableRow.isSelected}">
         <td>
           <input type="checkbox" [checked]="tableRow.isSelected" (click)="handleSelectionChange(tableRow)" />
         </td>
