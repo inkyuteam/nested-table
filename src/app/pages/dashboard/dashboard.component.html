@@ -17,7 +17,11 @@
 </nav>
 
 <div class="container mt-5">
-  <app-nested-table [(tableData)]="tableData"></app-nested-table>
+  <button type="button" class="btn btn-danger m-2" *ngIf="dashboardDataService.hasSelectedRow">
+    <i class="bi bi-trash"></i>
+    Delete multiple
+  </button>
+  <app-nested-table [(tableData)]="dashboardDataService.tableData"></app-nested-table>
 </div>
 
 <div class="mt-5 p-4 bg-dark text-white text-center">

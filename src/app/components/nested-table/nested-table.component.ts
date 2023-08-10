@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { data } from 'src/app/config';
 import { TableData } from 'src/app/interfaces';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { DashboardDataService } from 'src/app/services/dashboard-data.service';
 
 @Component({
   selector: 'app-nested-table',
@@ -13,7 +14,7 @@ export class NestedTableComponent {
   @Input() level: number = 1;
   @Output() tableDataChange = new EventEmitter<TableData[]>();
 
-  constructor(private modalService: NgbModal) { }
+  constructor(private modalService: NgbModal, private dashboardDataService: DashboardDataService) {}
 
   public open(modal: any): void {
     this.modalService.open(modal);
@@ -22,9 +23,11 @@ export class NestedTableComponent {
   handleSelectionChange(tableRow: TableData): void {
     tableRow.isSelected = !tableRow.isSelected;
     this.tableDataChange.emit(this.tableData);
+    this.dashboardDataService.changeRowSelection();
   }
 
   handleExpandChange(tableRow: TableData): void {
     tableRow.isExpanded = !tableRow.isExpanded;
+    this.dashboardDataService.changeRowSelection();
   }
 }

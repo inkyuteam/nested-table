@@ -1,16 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { data } from 'src/app/config';
 import { TableData } from 'src/app/interfaces';
+import { DashboardDataService } from 'src/app/services/dashboard-data.service';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent {
-  tableData: TableData[] = data;
+export class DashboardComponent{
 
-  ngOnInit(){
-    this.tableData[0].isSelected = true;
+  constructor(public dashboardDataService: DashboardDataService) {
+    this.dashboardDataService.tableData[0].isSelected = true;
   }
 }

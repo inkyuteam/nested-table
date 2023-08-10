@@ -7,6 +7,7 @@ import { NestedTableComponent } from './components/nested-table/nested-table.com
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { DashboardDataService } from './services/dashboard-data.service';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     AppRoutingModule,
     NgbModule
   ],
-  providers: [],
+  providers: [DashboardDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
