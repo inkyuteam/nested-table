@@ -17,7 +17,7 @@
 </nav>
 
 <div class="container mt-5">
-  <button type="button" class="btn btn-danger m-2" *ngIf="dashboardDataService.hasSelectedRow">
+  <button type="button" class="btn btn-danger m-2" *ngIf="dashboardDataService.hasSelectedRow" (click)="deleteBtnClicked()">
     <i class="bi bi-trash"></i>
     Delete multiple
   </button>
